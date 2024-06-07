@@ -1,0 +1,20 @@
+version: '3'
+services:
+  # backend:
+  #   container_name: backend
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile
+  #   depends_on:
+  #     - database
+  database:
+    image: postgis/postgis:15-master
+    restart: always
+    ports:
+      - '5532:5432'
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: data
+    volumes:
+      - ./data/test:/var/lib/postgresql/data
